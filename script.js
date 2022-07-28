@@ -17,7 +17,7 @@ function playerSelection() {
     return playerSelection;
 }
 
-function playGame(playerselect, computerselect) {
+function playtrough(playerselect, computerselect) {
     if (playerselect === "rock") {
         switch (computerselect) {
             case "rock":
@@ -48,4 +48,5 @@ function playGame(playerselect, computerselect) {
     }
 };
 
-console.log(playGame(playerSelection(), getRandomComputerChoice()));
+function game()
+console.log(playtrough(playerSelection(), getRandomComputerChoice()));
