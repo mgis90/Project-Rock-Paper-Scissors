@@ -47,33 +47,36 @@ function playtrough(playerselect, computerselect) {
 };
 
 function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let currentScore = `${playerScore} to ${computerScore}`;
     for (let i = 0; i < 5; i++) {
         let gameResult = playtrough(playerSelection(), getRandomComputerChoice());
         switch (gameResult) {
             case "Yes, you got him good!":
-                playerScore = playerScore + 1;
-                console.log(`You win this one! Current score is: ${currentScore}`);
+                playerScore++;
+                console.log(`You win this one! Current score is: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`);
                 break;
             case "It's a tie!":
-                console.log(`Score remains the same, and is now: ${currentScore}`);
+                numberOfDraws++;
+                console.log(`Score remains the same, and is now: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`);
                 break;
             case "Oh no, you lost!":
-                computerScore = computerScore + 1;
-                console.log(`Sorry, you lost this one! Current score is: ${currentScore}`);
+                computerScore++;
+                console.log(`Sorry, you lost this one! Current score is: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`);
                 break;
-
-        }
-
+            }
     }
+
     if (playerScore > computerScore) {
-        return `Congratulations, you won the game with the final score being: ${currentScore}!`;
+        return `Congratulations, you won the game with the final score being: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`;
     } else if (playerScore === computerScore) {
-        return `Your game was a tie with the final score of: ${currentScore}`;
+        return `Your game was a tie with the final score of: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`;
     } else if (playerScore < computerScore) {
-        return `Sorry, you lost this game. Don't give up, and try again! Final score was: ${currentScore}`;
+        return `Sorry, you lost this game. Don't give up, and try again! Final score was: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`;
     }
 }
+
+let playerScore = 0;
+let computerScore = 0;
+let numberOfDraws = 0;
+
 console.log(game());
+
