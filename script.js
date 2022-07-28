@@ -1,11 +1,11 @@
 function getRandomComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3);
     if (computerChoice === 0) {
-        return "Rock";
+        return "rock";
     } else if (computerChoice === 1) {
-        return "Paper";
+        return "paper";
     } else if (computerChoice === 2) {
-        return "Scissors";
+        return "scissors";
     }
 }
 
@@ -17,7 +17,35 @@ function playerSelection() {
     return playerSelection;
 }
 
-let test = playerSelection();
-console.log(test);
+function playGame(playerselect, computerselect) {
+    if (playerselect === "rock") {
+        switch (computerselect) {
+            case "rock":
+                return "It's a tie!";
+            case "paper":
+                return "Oh no, you lost!";
+            case "scissors":
+                return "Yes, you got him good!";
+        }
+    } else if (playerselect === "paper") {
+        switch(computerselect) {
+            case "rock":
+                return "Yes, you got him good!";
+            case "paper":
+                return "It's a tie!";
+            case "scissors":
+                return "Oh no, you lost!";
+        }
+    } else if (playerselect === "scissors") {
+        switch(computerselect) {
+            case "rock":
+                return "Oh no, you lost!";
+            case "paper":
+                return "Yes, you got him good!";
+            case "scissors":
+                return "It's a tie!";
+        }
+    }
+};
 
-//function playGame(playerSelection, getRandomComputerChoice);
+console.log(playGame(playerSelection(), getRandomComputerChoice()));
