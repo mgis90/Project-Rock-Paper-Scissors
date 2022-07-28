@@ -10,3 +10,14 @@ function getRandomComputerChoice() {
 }
 
 console.log(getRandomComputerChoice());
+
+function playerSelection() {
+    let playerSelection = prompt("Pick between rock, paper and scissors!");
+    playerSelection = playerSelection.toLowerCase();
+    return playerSelection;
+}
+
+let test = playerSelection();
+console.log(test);
+
+//function playGame(playerSelection, getRandomComputerChoice);
