@@ -49,20 +49,31 @@ function playtrough(playerselect, computerselect) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
+    let currentScore = `${playerScore} to ${computerScore}`;
     for (let i = 0; i < 5; i++) {
-        let gameScore = playtrough(playerSelection(), getRandomComputerChoice());
-        if (gameScore === "Yes, you got him good!") {
-            playerScore++;
-        } else if (gameScore === "Oh no, you lost!") {
-            computerScore++;
+        let gameResult = playtrough(playerSelection(), getRandomComputerChoice());
+        switch (gameResult) {
+            case "Yes, you got him good!":
+                playerScore = playerScore + 1;
+                console.log(`You win this one! Current score is: ${currentScore}`);
+                break;
+            case "It's a tie!":
+                console.log(`Score remains the same, and is now: ${currentScore}`);
+                break;
+            case "Oh no, you lost!":
+                computerScore = computerScore + 1;
+                console.log(`Sorry, you lost this one! Current score is: ${currentScore}`);
+                break;
+
         }
+
     }
     if (playerScore > computerScore) {
-        return `Congratulations, you've won ${playerScore} to ${computerScore}!`;
+        return `Congratulations, you won the game with the final score being: ${currentScore}!`;
     } else if (playerScore === computerScore) {
-        return `This game was a draw!`;
+        return `Your game was a tie with the final score of: ${currentScore}`;
     } else if (playerScore < computerScore) {
-        return `You lost ${computerScore} to ${playerScore}! But don't give up, you'll get him next time!`
+        return `Sorry, you lost this game. Don't give up, and try again! Final score was: ${currentScore}`;
     }
 }
 console.log(game());
