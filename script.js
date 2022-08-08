@@ -1,82 +1,61 @@
+//Function that gets randomly generated computer choice from rock, paper or scissors
 function getRandomComputerChoice() {
-    let computerChoice = Math.floor(Math.random() * 3);
-    if (computerChoice === 0) {
-        return "rock";
-    } else if (computerChoice === 1) {
-        return "paper";
-    } else if (computerChoice === 2) {
-        return "scissors";
-    }
+    let choice = Math.floor(Math.random() * 3);
+    return choice;
 }
 
+//Function that allows user to select in RPS.
 function playerSelection() {
     let playerSelection = prompt("Pick between rock, paper and scissors!");
     playerSelection = playerSelection.toLowerCase();
     return playerSelection;
 }
-
-function playtrough(playerselect, computerselect) {
+//Function that plays round and returns result based on the outcome
+function playRound(playerselect) {
+    let computerselect = getRandomComputerChoice();
     if (playerselect === "rock") {
         switch (computerselect) {
-            case "rock":
+            case 0:
                 return "It's a tie!";
-            case "paper":
+            case 1:
                 return "Oh no, you lost!";
-            case "scissors":
+            case 2:
                 return "Yes, you got him good!";
         }
     } else if (playerselect === "paper") {
         switch(computerselect) {
-            case "rock":
+            case 0:
                 return "Yes, you got him good!";
-            case "paper":
+            case 1:
                 return "It's a tie!";
-            case "scissors":
+            case 2:
                 return "Oh no, you lost!";
         }
     } else if (playerselect === "scissors") {
         switch(computerselect) {
-            case "rock":
+            case 0:
                 return "Oh no, you lost!";
-            case "paper":
+            case 1:
                 return "Yes, you got him good!";
-            case "scissors":
+            case 2:
                 return "It's a tie!";
         }
     }
 };
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let gameResult = playtrough(playerSelection(), getRandomComputerChoice());
-        switch (gameResult) {
-            case "Yes, you got him good!":
-                playerScore++;
-                console.log(`You win this one! Current score is: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`);
-                break;
-            case "It's a tie!":
-                numberOfDraws++;
-                console.log(`Score remains the same, and is now: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`);
-                break;
-            case "Oh no, you lost!":
-                computerScore++;
-                console.log(`Sorry, you lost this one! Current score is: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`);
-                break;
-            }
-    }
+//Selecting buttons and adding them to variables
+const rock = document.getElementById('rock')
+const paper = document.getElementById('paper')
+const scissors = document.getElementById('scissors')
 
-    if (playerScore > computerScore) {
-        return `Congratulations, you won the game with the final score being: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`;
-    } else if (playerScore === computerScore) {
-        return `Your game was a tie with the final score of: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`;
-    } else if (playerScore < computerScore) {
-        return `Sorry, you lost this game. Don't give up, and try again! Final score was: ${playerScore} to ${computerScore} and ${numberOfDraws} draws!`;
-    }
-}
 
-let playerScore = 0;
-let computerScore = 0;
-let numberOfDraws = 0;
-
-console.log(game());
-
+//Adding event listeners to buttons;
+rock.addEventListener('click', () => {
+    console.log(playRound('rock'));
+});
+paper.addEventListener('click', () => {
+    console.log(playRound('paper'));
+});
+scissors.addEventListener('click', () => {
+    console.log(playRound('scissors'));
+});
