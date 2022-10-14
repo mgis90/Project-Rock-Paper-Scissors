@@ -4,15 +4,11 @@ function getRandomComputerChoice() {
     return choice;
 }
 
-//Function that allows user to select in RPS.
-function playerSelection() {
-    let playerSelection = prompt("Pick between rock, paper and scissors!");
-    playerSelection = playerSelection.toLowerCase();
-    return playerSelection;
-}
 //Function that plays round and returns result based on the outcome
 function playRound(playerselect) {
+    //Getting computer's choice
     let computerselect = getRandomComputerChoice();
+
     if (playerselect === "rock") {
         switch (computerselect) {
             case 0:
@@ -48,14 +44,46 @@ const rock = document.getElementById('rock')
 const paper = document.getElementById('paper')
 const scissors = document.getElementById('scissors')
 
+//Selecting result field
+const result = document.getElementById('result');
+
+//Selecting score field
+const score = document.getElementsByClassName('score');
 
 //Adding event listeners to buttons;
 rock.addEventListener('click', () => {
-    console.log(playRound('rock'));
+    result.textContent = playRound('rock');
 });
 paper.addEventListener('click', () => {
-    console.log(playRound('paper'));
+    result.textContent = playRound('paper');
 });
 scissors.addEventListener('click', () => {
-    console.log(playRound('scissors'));
+    result.textContent = playRound('scissors');
 });
+
+//Game control function
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = movesLeft; i > 0; i--) {
+        switch (score) {
+            case 'Oh no, you lost!':
+                computerScore++;
+                break;
+            case "It's a tie!":
+                break;
+            case 'Yes, you got him good!':
+                playerScore++;
+                break;
+        }
+    }
+    if (playerScore > computerScore) {
+        return `You've won with the score of ${playerScore} vs ${computerScore}`;
+    } else if (computerScore > playerScore) {
+        return `You've lost with the score of ${computerScore} vs ${playerScore}`;
+    } else {
+        return `It's a ${playerScore}: ${computerScore} draw!`
+    }
+}

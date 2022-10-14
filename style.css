@@ -1,6 +1,53 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 45vw;
+}
+
 button {
     width: 100px;
     height: 50px;
     border: red solid 1px;
     background-color: cyan;
 }
+
+.RCP {
+    width: 600px;
+    height: 160px;
+    background-color: #9e9e9e;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.result-field {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+#result {
+    border: solid white 5px;
+    font-size: 24px;
+}
+
+.score {
+    height: 20%;
+    width: 100%;
+    background-color: yellow;
+}
+
