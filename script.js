@@ -9,6 +9,7 @@ function playRound(playerselect) {
     //Getting computer's choice
     let computerselect = getRandomComputerChoice();
 
+    //
     if (playerselect === "rock") {
         switch (computerselect) {
             case 0:
@@ -40,9 +41,13 @@ function playRound(playerselect) {
 };
 
 //Selecting buttons and adding them to variables
-const rock = document.getElementById('rock')
-const paper = document.getElementById('paper')
-const scissors = document.getElementById('scissors')
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+
+//Selecting score variables
+const playerScore = document.getElementById('playerScore');
+const computerScore = document.getElementById('computerScore')
 
 //Selecting result field
 const result = document.getElementById('result');
@@ -50,7 +55,7 @@ const result = document.getElementById('result');
 //Selecting score field
 const score = document.getElementsByClassName('score');
 
-//Adding event listeners to buttons;
+//Adding event listeners to buttons
 rock.addEventListener('click', () => {
     result.textContent = playRound('rock');
 });
@@ -64,21 +69,7 @@ scissors.addEventListener('click', () => {
 //Game control function
 
 function game() {
-    let playerScore = 0;
-    let computerScore = 0;
 
-    for (let i = movesLeft; i > 0; i--) {
-        switch (score) {
-            case 'Oh no, you lost!':
-                computerScore++;
-                break;
-            case "It's a tie!":
-                break;
-            case 'Yes, you got him good!':
-                playerScore++;
-                break;
-        }
-    }
     if (playerScore > computerScore) {
         return `You've won with the score of ${playerScore} vs ${computerScore}`;
     } else if (computerScore > playerScore) {

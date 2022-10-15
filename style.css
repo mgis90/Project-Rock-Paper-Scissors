@@ -41,13 +41,25 @@ button {
 }
 
 #result {
-    border: solid white 5px;
     font-size: 24px;
 }
 
 .score {
-    height: 20%;
+    height: 25%;
     width: 100%;
     background-color: yellow;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.playerScore {
+    border: 2px white solid;
+    width: 20%;
+}
+
+.computerScore {
+    border: 2px white solid;
+    width: 30%;
 }
 
