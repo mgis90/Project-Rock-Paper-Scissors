@@ -39,6 +39,14 @@ function playRound(playerselect) {
 
 //Function that tracks score.
 function scoreTracker(resultOfRound) {
+    if (playerScore.textContent == 5 || computerScore.textContent == 5) {
+        if (playerScore.textContent == 5) {
+            return result.textContent = "You've won!";
+        } else {
+            return result.textContent = "Computer has won!"
+        }
+    }
+
     switch(resultOfRound) {
         case "Yes, you got him good!":
             return playerScore.textContent++;
@@ -68,8 +76,8 @@ const score = document.getElementsByClassName('score');
 //Adding event listeners to buttons, and applying scoreTracker function.
 rock.addEventListener('click', () => {
     let roundResult = playRound('rock');
-    result.textContent = roundResult;
     scoreTracker(roundResult);
+    result.textContent = roundResult;
 });
 paper.addEventListener('click', () => {
     let roundResult = playRound('paper');
