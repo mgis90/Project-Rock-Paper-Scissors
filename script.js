@@ -6,10 +6,7 @@ function getRandomComputerChoice() {
 
 //Function that plays round and returns result based on the outcome
 function playRound(playerselect) {
-    //Getting computer's choice
     let computerselect = getRandomComputerChoice();
-
-    //
     if (playerselect === "rock") {
         switch (computerselect) {
             case 0:
@@ -40,6 +37,19 @@ function playRound(playerselect) {
     }
 };
 
+//Function that tracks score.
+function scoreTracker(resultOfRound) {
+    switch(resultOfRound) {
+        case "Yes, you got him good!":
+            return playerScore.textContent++;
+        case "It's a tie!":
+            return;
+        case "Oh no, you lost!":
+            return computerScore.textContent++;
+    }
+
+};
+
 //Selecting buttons and adding them to variables
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
@@ -55,26 +65,19 @@ const result = document.getElementById('result');
 //Selecting score field
 const score = document.getElementsByClassName('score');
 
-//Adding event listeners to buttons
+//Adding event listeners to buttons, and applying scoreTracker function.
 rock.addEventListener('click', () => {
-    result.textContent = playRound('rock');
+    let roundResult = playRound('rock');
+    result.textContent = roundResult;
+    scoreTracker(roundResult);
 });
 paper.addEventListener('click', () => {
-    result.textContent = playRound('paper');
+    let roundResult = playRound('paper');
+    result.textContent = roundResult;
+    scoreTracker(roundResult);
 });
 scissors.addEventListener('click', () => {
-    result.textContent = playRound('scissors');
+    let roundResult = playRound('scissors');
+    result.textContent = roundResult;
+    scoreTracker(roundResult);
 });
-
-//Game control function
-
-function game() {
-
-    if (playerScore > computerScore) {
-        return `You've won with the score of ${playerScore} vs ${computerScore}`;
-    } else if (computerScore > playerScore) {
-        return `You've lost with the score of ${computerScore} vs ${playerScore}`;
-    } else {
-        return `It's a ${playerScore}: ${computerScore} draw!`
-    }
-}
