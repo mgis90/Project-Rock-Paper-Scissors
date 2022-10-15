@@ -76,8 +76,8 @@ const score = document.getElementsByClassName('score');
 //Adding event listeners to buttons, and applying scoreTracker function.
 rock.addEventListener('click', () => {
     let roundResult = playRound('rock');
-    scoreTracker(roundResult);
     result.textContent = roundResult;
+    scoreTracker(roundResult);
 });
 paper.addEventListener('click', () => {
     let roundResult = playRound('paper');
