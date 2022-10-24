@@ -1,10 +1,10 @@
-//Function that gets randomly generated computer choice from rock, paper or scissors
+//Function that gets randomly generated computer choice from rock, paper or scissors.
 function getRandomComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
     return choice;
 }
 
-//Function that plays round and returns result based on the outcome
+//Function that plays round and returns result based on the outcome.
 function playRound(playerselect) {
     let computerselect = getRandomComputerChoice();
     if (playerselect === "rock") {
@@ -39,8 +39,9 @@ function playRound(playerselect) {
 
 //Function that tracks score.
 function scoreTracker(resultOfRound) {
-    if (playerScore.textContent == 5 || computerScore.textContent == 5) {
-        if (playerScore.textContent == 5) {
+    //For some reason it takes one more click on any of the buttons to get to the final result...?
+    if (playerScore.textContent === "5" || computerScore.textContent === "5") {
+        if (playerScore.textContent === "5") {
             return result.textContent = "You've won!";
         } else {
             return result.textContent = "Computer has won!"
@@ -58,19 +59,19 @@ function scoreTracker(resultOfRound) {
 
 };
 
-//Selecting buttons and adding them to variables
+//Selecting buttons and adding them to variables.
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
 
-//Selecting score variables
+//Selecting score variables.
 const playerScore = document.getElementById('playerScore');
 const computerScore = document.getElementById('computerScore')
 
-//Selecting result field
+//Selecting result field.
 const result = document.getElementById('result');
 
-//Selecting score field
+//Selecting score field.
 const score = document.getElementsByClassName('score');
 
 //Adding event listeners to buttons, and applying scoreTracker function.
