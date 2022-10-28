@@ -41,8 +41,9 @@ function playRound(playerselect) {
 
 //Function that tracks score.
 function scoreTracker(resultOfRound) {
-    if endgame
+    if (endgame) {
         return;
+    }
     switch(resultOfRound) {
         case "Yes, you got him good!":
             playerScore.textContent++;
@@ -83,16 +84,16 @@ const score = document.getElementsByClassName('score');
 //Adding event listeners to buttons, and applying scoreTracker function.
 rock.addEventListener('click', () => {
     let roundResult = playRound('rock');
-    result.textContent = roundResult;
+    //result.textContent = roundResult;
     scoreTracker(roundResult);
 });
 paper.addEventListener('click', () => {
     let roundResult = playRound('paper');
-    result.textContent = roundResult;
+    //result.textContent = roundResult;
     scoreTracker(roundResult);
 });
 scissors.addEventListener('click', () => {
     let roundResult = playRound('scissors');
-    result.textContent = roundResult;
+    //result.textContent = roundResult;
     scoreTracker(roundResult);
 });
