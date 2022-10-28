@@ -39,7 +39,19 @@ function playRound(playerselect) {
 
 //Function that tracks score.
 function scoreTracker(resultOfRound) {
+    switch(resultOfRound) {
+        case "Yes, you got him good!":
+            playerScore.textContent++;
+            break;
+        case "It's a tie!":
+            break;
+        case "Oh no, you lost!":
+            computerScore.textContent++;
+            break;
+    }
+
     //For some reason it takes one more click on any of the buttons to get to the final result...?
+    //----not anymore?--mgis
     if (playerScore.textContent === "5" || computerScore.textContent === "5") {
         if (playerScore.textContent === "5") {
             return result.textContent = "You've won!";
@@ -47,16 +59,6 @@ function scoreTracker(resultOfRound) {
             return result.textContent = "Computer has won!"
         }
     }
-
-    switch(resultOfRound) {
-        case "Yes, you got him good!":
-            return playerScore.textContent++;
-        case "It's a tie!":
-            return;
-        case "Oh no, you lost!":
-            return computerScore.textContent++;
-    }
-
 };
 
 //Selecting buttons and adding them to variables.
@@ -76,9 +78,9 @@ const score = document.getElementsByClassName('score');
 
 //Adding event listeners to buttons, and applying scoreTracker function.
 rock.addEventListener('click', () => {
-    let roundResult = playRound('rock');
-    result.textContent = roundResult;
-    scoreTracker(roundResult);
+        let roundResult = playRound('rock');
+        result.textContent = roundResult;
+        scoreTracker(roundResult);
 });
 paper.addEventListener('click', () => {
     let roundResult = playRound('paper');
