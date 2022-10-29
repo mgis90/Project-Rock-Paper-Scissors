@@ -44,6 +44,7 @@ function scoreTracker(resultOfRound) {
     if (endgame) {
         return;
     }
+    result.textContent = resultOfRound;
     switch(resultOfRound) {
         case "Yes, you got him good!":
             playerScore.textContent++;
@@ -58,6 +59,11 @@ function scoreTracker(resultOfRound) {
 
     if (playerScore.textContent === "5") {
         endgame = true;
+        if (computerScore.textContent === "0") {    // overkill/winstreak
+            result.textContent = "Fatality!";       //thats why we have to set the text first
+            document.getElementsByClassName('RPS')[0].innerHTML += '<img src="https://tse3.mm.bing.net/th?id=OIP.gtASavv5Vd-Dib4nNBS0HwHaEK">';
+            document.getElementsByClassName('buttons')[0].style.visibility = 'hidden';  //I'm not sure why after this the function is unable to return anymore
+        }
         return result.textContent = "You've won!";
     } else if (computerScore.textContent === "5") {
         endgame = true;
