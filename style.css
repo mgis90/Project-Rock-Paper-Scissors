@@ -5,19 +5,20 @@ body {
     margin: 0;
     padding: 0;
     height: 45vw;
+    background-color: #333333;
 }
 
 button {
     width: 100px;
     height: 50px;
-    border: red solid 1px;
-    background-color: cyan;
+    border: #5f391a solid 1px;
+    background-color: #8b5326;
 }
 
-.RCP {
+.RPS {
     width: 600px;
     height: 160px;
-    background-color: #9e9e9e;
+    background-color: #666666;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -47,7 +48,7 @@ button {
 .score {
     height: 25%;
     width: 100%;
-    background-color: yellow;
+    background-color: #b0b064;
     display: flex;
     justify-content: center;
     align-items: center;

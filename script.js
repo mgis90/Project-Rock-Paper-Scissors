@@ -1,3 +1,5 @@
+let endgame = false;
+
 //Function that gets randomly generated computer choice from rock, paper or scissors.
 function getRandomComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
@@ -39,24 +41,34 @@ function playRound(playerselect) {
 
 //Function that tracks score.
 function scoreTracker(resultOfRound) {
-    //For some reason it takes one more click on any of the buttons to get to the final result...?
-    if (playerScore.textContent === "5" || computerScore.textContent === "5") {
-        if (playerScore.textContent === "5") {
-            return result.textContent = "You've won!";
-        } else {
-            return result.textContent = "Computer has won!"
-        }
+    if (endgame) {
+        return;
     }
-
+    result.textContent = resultOfRound;
     switch(resultOfRound) {
         case "Yes, you got him good!":
-            return playerScore.textContent++;
+            playerScore.textContent++;
+            break;
         case "It's a tie!":
             return;
         case "Oh no, you lost!":
-            return computerScore.textContent++;
+            computerScore.textContent++;
+            break;
     }
 
+
+    if (playerScore.textContent === "5") {
+        endgame = true;
+        if (computerScore.textContent === "0") {    // overkill/winstreak
+            result.textContent = "Fatality!";       //thats why we have to set the text first
+            document.getElementsByClassName('RPS')[0].innerHTML += '<img src="https://tse3.mm.bing.net/th?id=OIP.gtASavv5Vd-Dib4nNBS0HwHaEK">';
+            document.getElementsByClassName('buttons')[0].style.visibility = 'hidden';  //I'm not sure why after this the function is unable to return anymore
+        }
+        return result.textContent = "You've won!";
+    } else if (computerScore.textContent === "5") {
+        endgame = true;
+        return result.textContent = "Computer has won!";
+    }
 };
 
 //Selecting buttons and adding them to variables.
@@ -74,19 +86,20 @@ const result = document.getElementById('result');
 //Selecting score field.
 const score = document.getElementsByClassName('score');
 
+
 //Adding event listeners to buttons, and applying scoreTracker function.
 rock.addEventListener('click', () => {
     let roundResult = playRound('rock');
-    result.textContent = roundResult;
+    //result.textContent = roundResult;
     scoreTracker(roundResult);
 });
 paper.addEventListener('click', () => {
     let roundResult = playRound('paper');
-    result.textContent = roundResult;
+    //result.textContent = roundResult;
     scoreTracker(roundResult);
 });
 scissors.addEventListener('click', () => {
     let roundResult = playRound('scissors');
-    result.textContent = roundResult;
+    //result.textContent = roundResult;
     scoreTracker(roundResult);
 });
