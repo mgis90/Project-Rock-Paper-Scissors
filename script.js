@@ -1,5 +1,3 @@
-let endgame = false;
-
 //Function that gets randomly generated computer choice from rock, paper or scissors.
 function getRandomComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
@@ -59,17 +57,15 @@ function scoreTracker(resultOfRound) {
 
     if (playerScore.textContent === "5") {
         endgame = true;
-        if (computerScore.textContent === "0") {    // overkill/winstreak
-            result.textContent = "Fatality!";       //thats why we have to set the text first
-            document.getElementsByClassName('RPS')[0].innerHTML += '<img src="https://tse3.mm.bing.net/th?id=OIP.gtASavv5Vd-Dib4nNBS0HwHaEK">';
-            document.getElementsByClassName('buttons')[0].style.visibility = 'hidden';  //I'm not sure why after this the function is unable to return anymore
-        }
         return result.textContent = "You've won!";
     } else if (computerScore.textContent === "5") {
         endgame = true;
         return result.textContent = "Computer has won!";
     }
 };
+
+//Flag controlling if the endgame has been reached.
+let endgame = false;
 
 //Selecting buttons and adding them to variables.
 const rock = document.getElementById('rock');
@@ -90,16 +86,13 @@ const score = document.getElementsByClassName('score');
 //Adding event listeners to buttons, and applying scoreTracker function.
 rock.addEventListener('click', () => {
     let roundResult = playRound('rock');
-    //result.textContent = roundResult;
     scoreTracker(roundResult);
 });
 paper.addEventListener('click', () => {
     let roundResult = playRound('paper');
-    //result.textContent = roundResult;
     scoreTracker(roundResult);
 });
 scissors.addEventListener('click', () => {
     let roundResult = playRound('scissors');
-    //result.textContent = roundResult;
     scoreTracker(roundResult);
 });
